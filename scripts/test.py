@@ -1,9 +1,4 @@
 # Copyright (c) Alibaba, Inc. and its affiliates.
-'''
-python test.py -w /root/cjr/projects/adaseq/experiments/facebook_roberta_glbptr_1204data/241205104050.519135
-'''
-
-
 import argparse
 import os
 import sys
