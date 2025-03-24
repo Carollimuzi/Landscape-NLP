@@ -1,0 +1,55 @@
+experiment:
+  exp_dir: experiments/
+  exp_name: resume
+  seed: 42
+
+task: named-entity-recognition
+
+dataset:
+  data_file:
+    train: 'https://www.modelscope.cn/api/v1/datasets/damo/resume_ner/repo/files?Revision=master&FilePath=train.txt'
+    valid: 'https://www.modelscope.cn/api/v1/datasets/damo/resume_ner/repo/files?Revision=master&FilePath=dev.txt'
+    test: 'https://www.modelscope.cn/api/v1/datasets/damo/resume_ner/repo/files?Revision=master&FilePath=test.txt'
+  data_type: conll
+  delimiter: ' '
+  labels:
+    type: count_span_labels
+
+preprocessor:
+  type: span-extraction-preprocessor
+  max_length: 200
+
+data_collator: SpanExtractionDataCollatorWithPadding
+
+model:
+  type: biaffine-ner-model
+  embedder:
+    model_name_or_path: damo/nlp_raner_named-entity-recognition_chinese-base-news
+  biaffine_ffnn_size: 150
+  flat_ner: true
+  dropout: 0.1
+
+train:
+  max_epochs: 20
+  dataloader:
+    batch_size_per_gpu: 32
+  optimizer:
+    type: AdamW
+    lr: 1.0e-3
+    param_groups:
+      - regex: transformer_model
+        lr: 2.0e-5
+  lr_scheduler:
+    type: LinearLR
+    start_factor: 1.0
+    end_factor: 0.0
+    total_iters: 20
+
+evaluation:
+  dataloader:
+    batch_size_per_gpu: 64
+  metrics:
+    - type: span-extraction-metric
+    - type: ner-dumper
+      model_type: span_based
+      dump_format: jsonline

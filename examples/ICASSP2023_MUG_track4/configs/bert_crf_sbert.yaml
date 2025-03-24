@@ -1,0 +1,53 @@
+experiment:
+  exp_dir: experiments
+  exp_name: kpe_sbert
+  seed: 42
+
+task: named-entity-recognition
+
+dataset:
+  data_type: conll
+  data_file:
+    train: ${root_dir}/examples/ICASSP2023_MUG_track4/dataset/processed_train.json.txt
+    dev: ${root_dir}/examples/ICASSP2023_MUG_track4/dataset/processed_dev.json.txt
+    test: ${root_dir}/examples/ICASSP2023_MUG_track4/dataset/processed_dev.json.txt
+
+preprocessor:
+  type: sequence-labeling-preprocessor
+  model_dir: bert-base-chinese
+  max_length: 192
+
+data_collator: SequenceLabelingDataCollatorWithPadding
+
+model:
+  type: sequence-labeling-model
+  embedder:
+    model_name_or_path: damo/nlp_structbert_backbone_base_std
+  dropout: 0.1
+  use_crf: true
+
+train:
+  max_epochs: 10
+  dataloader:
+    batch_size_per_gpu: 64
+  optimizer:
+    type: AdamW
+    lr: 2.0e-5
+    param_groups:
+      - regex: crf
+        lr: 5.0e-2
+  lr_scheduler:
+    type: LinearLR
+    start_factor: 1.0
+    end_factor: 0.0
+    total_iters: 10
+
+evaluation:
+  dataloader:
+    batch_size_per_gpu: 256
+    shuffle: false
+  metrics:
+    - type: ner-metric
+    - type: ner-dumper
+      model_type: sequence_labeling
+      dump_format: conll

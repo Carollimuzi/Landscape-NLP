@@ -1,0 +1,49 @@
+experiment:
+  exp_dir: experiments/
+  exp_name: wnut17_ra
+  seed: 42
+
+task: named-entity-recognition
+
+dataset:
+  data_file:
+    train: 'https://www.modelscope.cn/api/v1/datasets/damo/wnut17_ner/repo/files?Revision=master&FilePath=train.txt.ret'
+    valid: 'https://www.modelscope.cn/api/v1/datasets/damo/wnut17_ner/repo/files?Revision=master&FilePath=dev.txt.ret'
+    test: 'https://www.modelscope.cn/api/v1/datasets/damo/wnut17_ner/repo/files?Revision=master&FilePath=test.txt.ret'
+  data_type: conll
+
+preprocessor:
+  type: sequence-labeling-preprocessor
+  # return_original_view: true
+  max_length: 512
+
+data_collator: SequenceLabelingDataCollatorWithPadding
+
+model:
+  type: sequence-labeling-model
+  # multiview: true
+  embedder:
+    model_name_or_path: damo/nlp_raner_named-entity-recognition_multilingual-large-generic
+  dropout: 0.1
+  use_crf: true
+
+train:
+  max_epochs: 20
+  dataloader:
+    batch_size_per_gpu: 4
+  optimizer:
+    type: AdamW
+    lr: 5.0e-6
+    param_groups:
+      - regex: crf
+        lr: 5.0e-2
+  lr_scheduler:
+    type: LinearLR
+    start_factor: 1.0
+    end_factor: 0.0
+    total_iters: 20
+
+evaluation:
+  dataloader:
+    batch_size_per_gpu: 32
+  metrics: ner-metric
