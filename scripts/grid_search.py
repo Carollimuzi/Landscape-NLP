@@ -13,9 +13,9 @@ import pandas as pd
 import yaml
 from tqdm import tqdm
 
-# start command: python scripts/grid_search.py tune -c /root/cjr/projects/adaseq/configs/gp_modernbert_large_grid_search.yaml -y -g 0,1,2,3,4,5,6,7 -to log.txt
+# start command: python scripts/grid_search.py tune -c /root/adaseq/configs/gp_modernbert_large_grid_search.yaml -y -g 0,1,2,3,4,5,6,7 -to log.txt
 # kill command: python scripts/grid_search.py kill
-# collect command: python scripts/grid_search.py collect -c /root/cjr/projects/adaseq/configs/gp_modernbert_large_grid_search.yaml -o search_result/results_modern.csv -oa search_result/seed_avg_results_modern.csv
+# collect command: python scripts/grid_search.py collect -c /root/adaseq/configs/gp_modernbert_large_grid_search.yaml -o search_result/results_modern.csv -oa search_result/seed_avg_results_modern.csv
 def tune(args):
     """hyperparameter tuning via grid search
 
