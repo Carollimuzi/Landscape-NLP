@@ -1,0 +1,52 @@
+experiment:
+  exp_dir: /root/adaseq/experiments
+  exp_name: gp_xlmroberta_large_20250110data
+  seed: 42
+
+task: named-entity-recognition
+
+dataset:
+  data_file:
+
+    test: /root/data/splitdata/20250110check_modified_test.json
+    train: /root/data/splitdata/20250110check_modified_train.json
+    valid: /root/data/splitdata/20250110check_modified_test.json
+  data_type: json_spans
+  delimiter: ' '
+  labels:
+    type: count_span_labels
+
+preprocessor:
+  type: span-extraction-preprocessor
+  max_length: 500
+
+data_collator: SpanExtractionDataCollatorWithPadding
+
+model:
+  type: global-pointer-model
+  embedder:
+    model_name_or_path: adaseq/pretrained-models/xlm-roberta-large
+  token_ffn_out_width: 64
+  word_dropout: 0.1
+
+train:
+  max_epochs: 7
+  dataloader:
+    batch_size_per_gpu: 32
+  optimizer:
+    type: AdamW
+    lr: 4.0e-5
+  lr_scheduler:
+    type: LinearLR
+    start_factor: 1.0
+    end_factor: 0.0
+    total_iters: 10
+
+evaluation:
+  dataloader:
+    batch_size_per_gpu: 64
+  metrics:
+    - type: span-extraction-metric
+    - type: ner-dumper
+      model_type: span_based
+      dump_format: jsonline
