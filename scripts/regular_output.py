@@ -1,6 +1,6 @@
 import json
 
-# predfile = "/root/cjr/projects/adaseq/experiments/distilBERT/241102182853.614048/pred.txt"
+# predfile = "/root/adaseq/experiments/distilBERT/241102182853.614048/pred.txt"
 predfile = input("the path of pred.txt from model:")
 with open(predfile, 'r') as file:
     lines = file.readlines()
@@ -29,7 +29,7 @@ for entry in data:
     formatted_lines.append(f"tokens: {tokens}\nlabels: {labels}\npreds:  {predicts}\n \n")
 
 outname = input("saving name: ")
-output = "/root/cjr/data/outputs/" + outname
+output = "/root/data/outputs/" + outname
 with open(output, 'w') as file:
     file.writelines(formatted_lines)
 
