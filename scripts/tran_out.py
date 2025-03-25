@@ -1,6 +1,6 @@
 import json
 
-inputfile = '/root/cjr/projects/adaseq/experiments/globalpoter/241107212922.633395/pred.json'
+inputfile = '/root/adaseq/experiments/globalpoter/241107212922.633395/pred.json'
 with open(inputfile, 'r', encoding='utf-8') as file:
     for line in file:
         data = json.loads(line.strip())
@@ -27,7 +27,7 @@ with open(inputfile, 'r', encoding='utf-8') as file:
 
 
         # print(json.dumps(data, ensure_ascii=False))
-        outputfile = "/root/cjr/data/outputs/predict.json"
+        outputfile = "/root/data/outputs/predict.json"
         with open(outputfile, 'a', encoding='utf-8') as output_file:
             for key, value in data.items():
                 output_file.write(f"{key}: {json.dumps(value, ensure_ascii=False)}\n")
