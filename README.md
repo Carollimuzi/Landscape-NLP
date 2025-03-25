@@ -33,7 +33,7 @@ pip install -e . ## install adaseq
 pip install -r requirements.txt -f https://modelscope.oss-cn-beijing.aliyuncs.com/releases/repo.html
 
 ## 🏋️‍♂️ Train a Model
-python scripts/train.py -c paper_configs/global_roberta.yaml
+python scripts/train.py -c paper_configs/gp_xlmroberta_large.yaml
 
 ## 🧪 Predict or Evaluate
 python scripts/predict.py
