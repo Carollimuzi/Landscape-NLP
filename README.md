@@ -20,6 +20,12 @@ It includes tools for preprocessing landscape-related online reviews, training N
 
 ---
 
+📦 Data Availability
+To comply with platform fair-use policies, we do not release the full dataset.
+
+Instead, we provide a sample of 100 annotated sentences for demonstration purposes.
+---
+
 ## 🚀 Quick Start
 
 ### 🔧 Installation
@@ -38,7 +44,3 @@ python scripts/predict.py
 
 ---
 
-📦 Data Availability
-To comply with platform fair-use policies, we do not release the full dataset.
-
-Instead, we provide a sample of 100 annotated sentences for demonstration purposes.
