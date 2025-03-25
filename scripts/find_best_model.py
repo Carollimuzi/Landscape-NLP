@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 指定文件路径
-file_path = '/root/cjr/projects/adaseq/search_result/seed_avg_results_bert.csv'
+file_path = '/root/adaseq/search_result/seed_avg_results_bert.csv'
 
 # 读取CSV文件（处理多层列头）
 df = pd.read_csv(file_path, header=[0, 1])
