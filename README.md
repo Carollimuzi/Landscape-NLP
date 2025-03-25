@@ -29,7 +29,8 @@ To comply with platform fair-use policies, we do not release the full dataset. I
 
 ```bash
 ## 🔧 Installation
-pip install -e .
+pip install -e . ## install adaseq
+pip install -r requirements.txt -f https://modelscope.oss-cn-beijing.aliyuncs.com/releases/repo.html
 
 ## 🏋️‍♂️ Train a Model
 python scripts/train.py -c paper_configs/global_roberta.yaml
@@ -37,6 +38,3 @@ python scripts/train.py -c paper_configs/global_roberta.yaml
 ## 🧪 Predict or Evaluate
 python scripts/predict.py
 ### Make sure your input data follows the expected format (json-spans or jsonlines depending on your task).
-
----
-
