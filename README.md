@@ -20,19 +20,15 @@ It includes tools for preprocessing landscape-related online reviews, training N
 
 ---
 
-📦 Data Availability
-To comply with platform fair-use policies, we do not release the full dataset.
+## 📦 Data Availability
+To comply with platform fair-use policies, we do not release the full dataset. Instead, we provide a sample of 100 annotated sentences for demonstration purposes.
 
-Instead, we provide a sample of 100 annotated sentences for demonstration purposes.
 ---
 
 ## 🚀 Quick Start
 
-### 🔧 Installation
-
-Install the package locally using `pip`:
-
 ```bash
+## 🔧 Installation
 pip install -e .
 
 ## 🏋️‍♂️ Train a Model
