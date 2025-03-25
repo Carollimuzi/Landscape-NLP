@@ -11,7 +11,6 @@ from adaseq.commands.test import test_model  # noqa: E402 isort:skip
 
 warnings.filterwarnings('ignore')
 
-
 def main(args):
     """test a model from args"""
     test_model(args.work_dir, args.device, args.checkpoint_path)
