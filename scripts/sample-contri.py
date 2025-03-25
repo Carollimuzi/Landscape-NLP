@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from collections import Counter
 
 # # Load the cleaned JSON file
-# file_path = '/root/cjr/data/cleaned_labeldata211_v2.json'
+# file_path = '/root/data/cleaned_labeldata211_v2.json'
 # with open(file_path, 'r') as file:
 #     data = json.load(file)
 
@@ -31,11 +31,11 @@ from collections import Counter
 #     plt.text(bar.get_width() + 1, bar.get_y() + bar.get_height() / 2, str(bar.get_width()), ha='left', va='center')
 
 # # Save the plot to the current path
-# plt.savefig('/root/cjr/data/label_distribution1.png')
+# plt.savefig('/root/data/label_distribution1.png')
 
 
 # Load the JSON file
-file_path = '/root/cjr/data/originaldata.json'
+file_path = '/root/data/originaldata.json'
 with open(file_path, 'r') as file:
     data = json.load(file)
 
@@ -66,7 +66,7 @@ for bar in bars:
     plt.text(bar.get_width() + 1, bar.get_y() + bar.get_height() / 2, str(bar.get_width()), ha='left', va='center')
 
 # Save the plot
-plt.savefig('/root/cjr/data/originaldata.png')
+plt.savefig('/root/data/originaldata.png')
 
 # Show the plot
 plt.show()
