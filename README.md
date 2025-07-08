@@ -4,17 +4,24 @@ This repository provides the codebase for the paper:
 
 > **LCNER: A Named Entity Recognition Dataset and Model for Landscape and Urban Planning**
 
-It includes tools for preprocessing landscape-related online reviews, training NER models, and evaluating predictions within the domain of landscape and urban planning.
+It includes tools for preprocessing landscape-related online reviews, applying stage-specific prompts, training NER models, and evaluating predictions within the domain of landscape and urban planning.
 
 ---
 
 ## 📁 Repository Structure & Functionality
+
 
 - `Data_process.ipynb`  
   A complete walkthrough for:
   - Converting raw `.csv` files (with review sentences) into JSON Lines format for model input
   - Parsing model predictions back to `.csv` for **manual verification**
   - Converting manually corrected `.csv` files into `json-spans` format for **model training**
+
+- `Main_prompts.ipynb`  
+  A collection of few-shot prompts for:
+  - Automatic annotation using GPT-4
+  - Enhancing lexicon-based extraction performance
+  - Selecting sentences that contain underrepresented entities
 
 - Model training & prediction scripts are built on top of [AdaSeq](https://github.com/modelscope/AdaSeq).
 
