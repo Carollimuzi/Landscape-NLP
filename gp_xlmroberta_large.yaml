@@ -1,0 +1,52 @@
+experiment:
+  exp_dir: /home/wp/wenpei/wenpei/AdaSeq-master/experiments
+  exp_name: gp_xlmroberta_large
+  seed: 42
+
+task: named-entity-recognition
+
+dataset:
+  path: ''  
+  data_file:
+    test: /home/wp/wenpei/wenpei/AdaSeq-master/dataset/20250617test2.json
+    train: /home/wp/wenpei/wenpei/AdaSeq-master/dataset/20250617train8.json
+    valid: /home/wp/wenpei/wenpei/AdaSeq-master/dataset/20250617test2.json
+  data_type: json_spans
+  delimiter: ' '
+  labels:
+    type: count_span_labels
+
+preprocessor:
+  type: span-extraction-preprocessor
+  max_length: 500
+
+data_collator: SpanExtractionDataCollatorWithPadding
+
+model:
+  type: global-pointer-model
+  embedder:
+    model_name_or_path: /home/wp/wenpei/wenpei/thirdwork/xlm_roberta_large
+  token_ffn_out_width: 64
+  word_dropout: 0.1
+
+train:
+  max_epochs: 20
+  dataloader:
+    batch_size_per_gpu: 16
+  optimizer:
+    type: AdamW
+    lr: 3e-5
+  lr_scheduler:
+    type: LinearLR
+    start_factor: 1.0
+    end_factor: 0.0
+    total_iters: 15
+
+evaluation:
+  dataloader:
+    batch_size_per_gpu: 64
+  metrics:
+    - type: span-extraction-metric
+    - type: ner-dumper
+      model_type: span_based
+      dump_format: jsonline
