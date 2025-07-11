@@ -2,7 +2,7 @@
 
 This repository provides the codebase for the paper:
 
-> **LCNER: A Named Entity Recognition Dataset and Model for Landscape and Urban Planning**
+> **LCNER: Measuring environment-human interactions using a named entity recognition model**
 
 It includes tools for preprocessing landscape-related online reviews, applying stage-specific prompts, training NER models, and evaluating predictions within the domain of landscape and urban planning.
 
