@@ -17,7 +17,7 @@ It includes tools for preprocessing landscape-related online reviews, applying s
   - Parsing model predictions back to `.csv` for **manual verification**
   - Converting manually corrected `.csv` files into `json-spans` format for **model training**
 
-- `Main_prompts.ipynb`  
+- `Main prompts.ipynb`  
   A collection of few-shot prompts for:
   - Automatic annotation using GPT-4
   - Enhancing lexicon-based classification performance
