@@ -31,7 +31,7 @@ It includes tools for preprocessing landscape-related online reviews, applying s
 ---
 
 ## 📦 Data Availability
-To comply with platform fair-use policies, we do not release the full dataset. Instead, we provide a sample of 100 annotated sentences for demonstration purposes.
+To comply with platform fair-use policies, we do not release the full dataset. Instead, we provide a representative sample of 100 annotated sentences (test100.json) for demonstration purposes.
 
 ---
 
