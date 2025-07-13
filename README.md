@@ -22,7 +22,10 @@ It includes tools for preprocessing landscape-related online reviews, applying s
   - Automatic annotation using GPT-4
   - Enhancing lexicon-based extraction performance
   - Selecting sentences that contain underrepresented entities
-
+  - 
+- `Grid-search-results.ipynb`  
+  - Contains the loss and F1-score curves for each hyperparameter combination, with the optimal early-stopping point (patience = 5) clearly marked.
+    
 - Model training & prediction scripts are built on top of [AdaSeq](https://github.com/modelscope/AdaSeq).
 
 ---
