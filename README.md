@@ -20,9 +20,9 @@ It includes tools for preprocessing landscape-related online reviews, applying s
 - `Main_prompts.ipynb`  
   A collection of few-shot prompts for:
   - Automatic annotation using GPT-4
-  - Enhancing lexicon-based extraction performance
+  - Enhancing lexicon-based classification performance
   - Selecting sentences that contain underrepresented entities
-  - 
+  
 - `Grid-search-results.ipynb`  
   - Contains the loss and F1-score curves for each hyperparameter combination, with the optimal early-stopping point (patience = 5) clearly marked.
     
