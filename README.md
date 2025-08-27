@@ -2,7 +2,7 @@
 
 This repository provides the codebase for the paper:
 
-> **Measuring environment-human interactions using a named entity recognition model**
+> **Associations among park features, physical activities, and sensory perceptions from online reviews: a domain-specific named entity model**
 
 It includes tools for preprocessing landscape-related online reviews, applying stage-specific prompts, training NER models, and evaluating predictions within the domain of landscape and urban planning.
 
