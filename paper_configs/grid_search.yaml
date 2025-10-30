@@ -1,0 +1,67 @@
+experiment:
+  exp_dir: /home/AdaSeq-master/experiments0926
+  exp_name: gp_xlmroberta_large8
+  seed: 44
+
+task: named-entity-recognition
+
+dataset:
+  data_file:
+    test: /home/AdaSeq-master/steps/fold/20250625data08_test.json
+    train: /home/AdaSeq-master/steps/fold/20250625data08_validtrain.json
+    valid: /home/AdaSeq-master/steps/fold/20250625data08_test.json 
+  data_type: json_spans
+  delimiter: ' '
+  labels:
+    type: count_span_labels
+
+preprocessor:
+  type: span-extraction-preprocessor
+  max_length: 500
+
+data_collator: SpanExtractionDataCollatorWithPadding
+
+model:
+  type: global-pointer-model
+  embedder:
+    model_name_or_path: 
+                      - /home/thirdwork/model/deberta
+    transformer_kwargs:
+      trust_remote_code: true
+  token_ffn_out_width: 64
+  word_dropout: 0.1
+
+train:
+  max_epochs: 10
+
+  dataloader:
+    batch_size_per_gpu: 16
+  optimizer:
+    type: AdamW
+    lr: 
+      - 3.0e-5
+
+      # options: 
+      # # gradient cumulative interval, default 1
+      #   cumulative_iters: 2
+  lr_scheduler:
+    type: LinearLR
+    start_factor: 1.0
+    end_factor: 0.0
+    total_iters:
+              #  - 5
+               - 10
+              #  - 15
+  hooks:
+    - type: CheckpointHook
+      interval: 10     
+      by_epoch: true  
+
+evaluation:
+  dataloader:
+    batch_size_per_gpu: 64
+  metrics:
+    - type: span-extraction-metric
+    - type: ner-dumper
+      model_type: span_based
+      dump_format: jsonline
