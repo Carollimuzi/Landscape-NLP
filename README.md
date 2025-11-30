@@ -66,4 +66,5 @@ python scripts/train.py -c paper_configs/gp_xlmroberta_large.yaml
 
 ## 🧪 Predict or Evaluate
 python scripts/predict.py
+bash run_predict.sh # Run inference using the models released with this paper.
 ### Make sure your input data follows the expected format (json-spans or jsonlines depending on your task).
