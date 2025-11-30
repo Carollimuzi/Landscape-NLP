@@ -28,7 +28,7 @@ It includes tools for preprocessing landscape-related online reviews, applying s
 
 ## 📦 Data Availability
 To comply with platform fair-use policies, we do not release the full dataset. Instead, we provide a representative sample of 100 annotated sentences (test100.json) for demonstration purposes.
-
+Feature1023.csv is also included as the lexicon used in our experiments.
 ---
 
 ## 🧩 Reproducibility Checklist
