@@ -1,4 +1,4 @@
-# 🌿 Landscape-NLP
+# 🌿 Landscape character NER (LCNER)
 
 This repository provides the codebase for the paper:
 
